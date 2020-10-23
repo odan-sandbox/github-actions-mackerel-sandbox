@@ -37,7 +37,7 @@ jobs:
   
     - name: Run yes
       run: |
-        timeout --preserve-status 10 yes > /dev/null
+        timeout 10 yes > /dev/null; exit 0
 
     - name: Kill
       run: |
