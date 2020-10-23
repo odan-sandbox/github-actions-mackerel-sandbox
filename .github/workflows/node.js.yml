@@ -38,10 +38,6 @@ jobs:
     - name: Run yes
       run: |
         sleep 10
-
-    - name: Kill
-      run: |
-        kill %1
   
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
