@@ -31,12 +31,12 @@ jobs:
       env:
         MACKEREL_API_KEY: ${{ secrets.MACKEREL_API_KEY }}
   
-    - name: Build NodeJS
+    - name: Run jest
       run: |
-        git clone https://github.com/nodejs/node
-        cd node
-        ./configure
-        make -j2
+        git clone https://github.com/facebook/jest
+        cd jest
+        yarn
+        yarn test
 
 
     - name: Retire
