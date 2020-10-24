@@ -26,12 +26,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
       
 
-    - name: Setup mackerel
-      run: |
-        wget -q -O - https://mackerel.io/file/script/setup-apt-v2.sh | sh
-        sudo apt-get install mackerel-agent
-        sudo mackerel-agent init -apikey="$MACKEREL_API_KEY"
-        sudo nohup mackerel-agent --conf=/etc/mackerel-agent/mackerel-agent.conf &
+    - name: Start mackerel
+      run: ./scripts/start.sh
       env:
         MACKEREL_API_KEY: ${{ secrets.MACKEREL_API_KEY }}
   
@@ -39,9 +35,8 @@ jobs:
       run: |
         sleep 10
 
-    - name: Kill
-      run: |
-        sudo kill -9 `cat /var/run/mackerel-agent.pid`
+    - name: Retire
+      run: ./scripts/retire.sh
   
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
