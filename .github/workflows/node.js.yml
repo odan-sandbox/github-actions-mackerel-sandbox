@@ -38,6 +38,10 @@ jobs:
     - name: Run yes
       run: |
         sleep 10
+
+    - name: Kill
+      run: |
+        sudo kill -9 `cat /var/run/mackerel-agent.pid`
   
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
